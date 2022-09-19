@@ -2,10 +2,17 @@ export const THEMES = {
     default: {
       title_color: "FFFFFF",
       icon_color: "FFFFFF",
-      text_color: "FFFFFF",
+      text_good_color: "FFFFFF",
+      text_medium_color: "8958A3",
+      text_bad_color: "C12F2F",
       bg_color: "2FC18C",
       empty_color: "E1E5EB",
-      fill_color: "006DFB",
+      fill_good_color: "006DFB",    
+      fill_medium_color: "8958A3",
+      fill_bad_color: "C12F2F",
+      emoj_code_good: "129321",
+      emoj_code_medium: "129321",
+      emoj_code_bad: "129321",
     },
 };
   
