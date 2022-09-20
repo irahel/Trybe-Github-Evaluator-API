@@ -1,25 +1,12 @@
-import { THEMES } from "./themes";
-
-export function renderTrybeCard(grade: number, theme=THEMES.default, options = {}) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.renderTrybeCard = void 0;
+const themes_1 = require("./themes");
+function renderTrybeCard(grade, theme = themes_1.THEMES.default, options = {}) {
     //TODO: unpack options here
     const title = "Meu perfil é nota:";
-
     //unpack Theme options
-    const {
-        title_color,         
-        text_good_color, 
-        text_medium_color, 
-        text_bad_color, 
-        bg_color, 
-        empty_color,
-        fill_good_color,
-        fill_medium_color,
-        fill_bad_color,
-        emoj_code_good,
-        emoj_code_medium,
-        emoj_code_bad
-    } = theme;
-
+    const { title_color, text_good_color, text_medium_color, text_bad_color, bg_color, empty_color, fill_good_color, fill_medium_color, fill_bad_color, emoj_code_good, emoj_code_medium, emoj_code_bad } = theme;
     const iconSize = 90;
     const cardWidth = 630;
     const cardHeight = 170;
@@ -27,14 +14,13 @@ export function renderTrybeCard(grade: number, theme=THEMES.default, options = {
     const progresseEmptyWidth = 445;
     const progressHeight = 20;
     const progressBorderRadius = 8;
-
     //Sanity check for strange grade values
-    if (grade < 0)  grade = 0;
-    else if (grade > 100)   grade = 100;
-    
+    if (grade < 0)
+        grade = 0;
+    else if (grade > 100)
+        grade = 100;
     //Calculates the progress to fill.
     const progresseFillWidth = ((progresseEmptyWidth * grade) / 100);
-
     return `
     <svg 
         xmlns="http://www.w3.org/2000/svg" 
@@ -77,21 +63,21 @@ export function renderTrybeCard(grade: number, theme=THEMES.default, options = {
                 x="144" y="105" 
                 width="${progresseFillWidth}" 
                 height="${progressHeight}" 
-                fill="#${grade/10 >= 9? fill_good_color : (grade/10 >= 5? fill_medium_color : fill_bad_color) }"
+                fill="#${grade / 10 >= 9 ? fill_good_color : (grade / 10 >= 5 ? fill_medium_color : fill_bad_color)}"
                 rx="${progressBorderRadius}"/>
             <text 
                 xmlns="http://www.w3.org/2000/svg" 
                 x="500" y="120"
                 class="textPunctuation"                     
                 data-testid="header">                    
-                ${grade.toString().length == 1? '0'+(grade/10).toString() : (grade/10)}/10
+                ${grade.toString().length == 1 ? '0' + (grade / 10).toString() : (grade / 10)}/10
             </text>
             <text 
                 xmlns="http://www.w3.org/2000/svg" 
                 x="550" y="133"
                 class="emoj"                     
                 data-testid="header">                    
-                &#${grade/10 >= 9? emoj_code_good : (grade/10 >= 5? emoj_code_medium : emoj_code_bad) };
+                &#${grade / 10 >= 9 ? emoj_code_good : (grade / 10 >= 5 ? emoj_code_medium : emoj_code_bad)};
             </text>
             </g>
         </g>                
@@ -116,7 +102,7 @@ export function renderTrybeCard(grade: number, theme=THEMES.default, options = {
                     font-family: 'Epilogue', sans-serif;
                     font-weight: semi-bold;
                     font-size: 15px;
-                    fill: #${grade/10 >= 9? text_good_color : (grade/10 >= 5? text_medium_color : text_bad_color) };
+                    fill: #${grade / 10 >= 9 ? text_good_color : (grade / 10 >= 5 ? text_medium_color : text_bad_color)};
                     animation: fadeInAnimation 0.8s ease-in-out forwards;
                 }
                 .emoj{
@@ -138,3 +124,4 @@ export function renderTrybeCard(grade: number, theme=THEMES.default, options = {
     </svg>
     `;
 }
+exports.renderTrybeCard = renderTrybeCard;

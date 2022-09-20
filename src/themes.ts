@@ -11,8 +11,8 @@ export const THEMES = {
       fill_medium_color: "8958A3",
       fill_bad_color: "C12F2F",
       emoj_code_good: "129321",
-      emoj_code_medium: "129321",
-      emoj_code_bad: "129321",
+      emoj_code_medium: "128528",
+      emoj_code_bad: "128557",
     },
 };
   
