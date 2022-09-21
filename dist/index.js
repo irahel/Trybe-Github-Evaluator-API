@@ -15,18 +15,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const render_1 = require("./render");
+const axios_1 = __importDefault(require("axios"));
 const port = 3333;
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use((0, cors_1.default)());
 app.get('/:github_user', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     res.setHeader("Content-Type", "image/svg+xml");
-    /*const grade = axios('http://localhost:3333/games').then(response => {
-        setGames(response.data)
-      }
-        )
-        */
-    const grade = 100;
+    //Seting no cache
+    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    res.header('Expires', '-1');
+    res.header('Pragma', 'no-cache');
+    const grade = yield axios_1.default.get(`https://avaliadorgit.com/?github_user=${req.params.github_user}`)
+        .then(res => res.data.grade);
     return res.send((0, render_1.renderTrybeCard)(grade));
 }));
 app.listen(port, () => console.log(`TGS app listening on port ${port}!`));
